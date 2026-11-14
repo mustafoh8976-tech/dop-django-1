@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Books</title>
+</head>
+<body>
+    <h1>Books</h1>
+    <a href="{% url 'create_books' %}">Add new book</a>
+
+    {% if books %}
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Author</th>
+                <th>Caption</th>
+                <th>Actions</th>
+            </tr>
+            {% for book in books %}
+                <tr>
+                    <td>{{ book.pk }}</td>
+                    <td>{{ book.name_b }}</td>
+                    <td>{{ book.after_b }}</td>
+                    <td>{{ book.caption }}</td>
+                    <td>
+                        <a href="{% url 'update_books' book.pk %}">Edit</a>
+                        <a href="{% url 'delete_books' book.pk %}">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No books yet.</p>
+    {% endif %}
+</body>
+</html>
